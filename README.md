@@ -12,5 +12,3 @@
   - `prediction/`: Predicted stock prices.
 - `utility/`: Utility scripts.
 
-## LLM
-- using Gemini API to summarize and making prediction.

@@ -41,7 +41,7 @@ generation_config = {
 model = genai.GenerativeModel(
     model_name="gemini-1.5-flash",
     generation_config=generation_config,
-    system_instruction="dự đoán biến động giá cổ phiếu theo yêu cầu. câu trả lời chỉ là tăng hoặc giảm, không giả thích gì thêm.",
+    system_instruction="dự đoán biến động giá cổ phiếu theo yêu cầu. câu trả lời chỉ là tăng hoặc giảm, không giải thích gì thêm.",
 )
 
 # Start a chat session with the model
@@ -134,28 +134,3 @@ for ticker in vn30:
     df_new_row.to_csv(accuracy_file, mode='a', header=False, index=False, encoding='utf-8-sig')
     
     print(f"Predictions for {ticker} have been generated with accuracy {accuracy}.")
-
-# -------------------------------------------------------------------------------------------------------------------------------------------------
-# Calculate the average accuracy and find the best and worst tickers
-# -------------------------------------------------------------------------------------------------------------------------------------------------
-
-# Calculate the average accuracy of all tickers
-df_accuracy = pd.read_csv(accuracy_file, encoding='utf-8')
-average_accuracy = df_accuracy['accuracy'].mean()
-add_row = {'ticker': 'Average', 'accuracy': average_accuracy}
-df_add_row = pd.DataFrame([add_row])
-df_add_row.to_csv(accuracy_file, mode='a', header=False, index=False, encoding='utf-8-sig')
-
-# Find the ticker with the highest accuracy
-max_accuracy = df_accuracy['accuracy'].max()
-best_ticker = df_accuracy[df_accuracy['accuracy'] == max_accuracy]['ticker'].values[0]
-add_row = {'ticker': f'Best({best_ticker})', 'accuracy': max_accuracy}
-df_add_row = pd.DataFrame([add_row])
-df_add_row.to_csv(accuracy_file, mode='a', header=False, index=False, encoding='utf-8-sig')
-
-# Find the ticker with the lowest accuracy
-min_accuracy = df_accuracy['accuracy'].min()
-worst_ticker = df_accuracy[df_accuracy['accuracy'] == min_accuracy]['ticker'].values[0]
-add_row = {'ticker': f'Worst({worst_ticker})', 'accuracy': min_accuracy}
-df_add_row = pd.DataFrame([add_row])
-df_add_row.to_csv(accuracy_file, mode='a', header=False, index=False, encoding='utf-8-sig')

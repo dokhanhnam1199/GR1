@@ -25,7 +25,7 @@ generation_config = {
 
 # Initialize the generative model with the specified configuration
 model = genai.GenerativeModel(
-  model_name="gemini-1.5-flash-8b",
+  model_name="gemini-1.5-flash",
   generation_config=generation_config,
 )
 

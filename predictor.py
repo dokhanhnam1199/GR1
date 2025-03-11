@@ -63,7 +63,7 @@ vn30 = df['Ticker'].tolist() # List of tickers in the VN30 index
 
 # Loop through each ticker in the VN30 list
 for ticker in vn30:
-    prediction_file = f"result/prediction/{ticker}.csv"  # File to save predictions
+    prediction_file = f"test/{ticker}_prediction.csv"  # File to save predictions
 
     # Create the prediction file if it doesn't exist
     if not os.path.exists(prediction_file):

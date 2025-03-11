@@ -75,7 +75,7 @@ def vn30Scraper(vn30, cut_off_date):
         keywords = vn30[ticker]
         links = linkScraper(keywords)
 
-        filename = f"data/news/{ticker}.csv"
+        filename = f"test/{ticker}_news.csv"
 
         with open(filename, mode="w", newline="", encoding="utf-8") as file:
             writer = csv.DictWriter(file, fieldnames=["publish_date", "title", "content"])

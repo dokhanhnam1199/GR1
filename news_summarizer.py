@@ -43,7 +43,7 @@ vn30 = df['Ticker'].tolist()
 # Loop through each ticker in the VN30 list
 for ticker in vn30:
     # Create the summary file for the current ticker
-    summary_file = f"data/summary/{ticker}.csv"
+    summary_file = f"test/{ticker}_summary.csv"
     df_summary = pd.DataFrame(columns=['publish_date', 'title', 'summary'])
     df_summary.to_csv(summary_file, index=False, encoding='utf-8-sig')
 
